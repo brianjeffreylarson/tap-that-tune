@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- viewport-fit=cover is required for iOS safe-area insets (notch / home bar) -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <!-- iOS "Add to Home Screen" / standalone behaviour -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="%APP_NAME%" />
+    <meta name="theme-color" content="#0a0420" />
+    <title>%APP_NAME%</title>
+    <!-- Figtree (clean geometric humanist sans, display + body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap"
+    />
+  </head>
+  <body>
+    <!-- .screen is the sized container (full-bleed on mobile, phone-width on
+         desktop). The background, shimmer orbs, the app, and the confetti
+         layer are stacked siblings inside it so re-rendering #app never
+         disturbs the background/orbs/confetti. -->
+    <div class="screen">
+      <div class="bg-stage" aria-hidden="true"></div>
+      <div class="orbs" id="orbs" aria-hidden="true"></div>
+      <div id="app"></div>
+      <div id="confetti" class="confetti-layer" aria-hidden="true"></div>
+      <!-- Overlay layer for confirm dialogs (sibling of #app so it can sit
+           above the bottom bar). -->
+      <div id="modalRoot"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

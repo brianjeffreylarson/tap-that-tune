@@ -1,0 +1,18 @@
+{
+  "name": "brad-names-tunes",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A mobile-first Name That Tune (Golden Medley) practice app. One codebase, two products (Brad Names Tunes + Tap That Track) streaming from a shared MP3 library.",
+  "scripts": {
+    "dev": "vite",
+    "dev:ttt": "VITE_APP_VARIANT=ttt vite",
+    "build": "vite build",
+    "build:ttt": "VITE_APP_VARIANT=ttt vite build",
+    "preview": "vite preview",
+    "preview:ttt": "VITE_APP_VARIANT=ttt vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  }
+}
