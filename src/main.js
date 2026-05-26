@@ -13,7 +13,10 @@
 //   revealed  -> splits into two half-circles: MISSED | GOT IT (grade + advance)
 //   paused    -> "▶": tap to resume (the bottom Pause button paused it)
 //   auto-miss -> "NEXT": countdown hit 0, song marked wrong, tap to advance
-//   choosing  -> (Tap That Track only) the initial difficulty pop-up
+//
+// On Tap That Track, an initial difficulty chooser overlays the idle game in
+// #modalRoot — so picking a level just dismisses the overlay; the game UI
+// behind it never has to flash in.
 //
 // A stats strip (Win / Avg buzz time / Streak) tracks the current session.
 // GOT IT bursts confetti. Shimmer orbs drift over the background.
@@ -51,7 +54,7 @@ const state = {
   current: null,
   currentStartMs: null,
   wrongOnly: false, // Brad only
-  phase: 'idle', // choosing | idle | playing | paused | buzzed | revealed
+  phase: 'idle', // idle | playing | paused | buzzed | revealed
   autoMissed: false, // true when the current reveal came from the timer expiring
   timeLeftMs: AUTO_REVEAL_MS,
   timerId: null,
@@ -241,14 +244,16 @@ function on(id, evt, fn) {
 
 // ---- difficulty chooser (Tap That Track) -----------------------------------
 
-function renderChooser() {
-  // The chooser overwrites #app, so the game shell is no longer there. Force
-  // mountGameShell() to rebuild it next time we transition into the game.
-  gameShellMounted = false;
-  mount(`
-    ${brandHeader()}
-    <div class="chooser-wrap">
-      <div class="modal">
+// The TTT difficulty chooser used to replace the entire #app DOM, which meant
+// the rest of the game (stats, info-box, buzzer) only existed AFTER a level
+// was picked — that's the "flash" between picking a level and seeing the
+// game. We now render the game shell in idle phase from the start, and layer
+// the chooser into #modalRoot as a scrim+modal overlay. Picking a level just
+// fades the scrim out and the already-loaded game is revealed underneath.
+function renderChooserOverlay() {
+  modalRoot.innerHTML = `
+    <div class="chooser-scrim" id="chooserScrim">
+      <div class="modal chooser-modal">
         <div class="modal-title">Choose your level</div>
         <div class="modal-sub">Pick a difficulty to start</div>
         <div class="diff-grid">
@@ -264,8 +269,8 @@ function renderChooser() {
         </div>
       </div>
     </div>
-  `);
-  document.querySelectorAll('[data-diff]').forEach((b) =>
+  `;
+  modalRoot.querySelectorAll('[data-diff]').forEach((b) =>
     b.addEventListener('click', () => {
       haptic(18);
       chooseDifficulty(b.getAttribute('data-diff'));
@@ -275,9 +280,23 @@ function renderChooser() {
 
 function chooseDifficulty(d) {
   state.difficulty = d;
-  state.phase = 'idle';
   applyTrackSet();
-  renderGame();
+  // Fade the chooser out instead of yanking it; the game is already idle
+  // behind it so no further renderGame() call is needed (state.phase is
+  // already 'idle', and the buzzer would still say START).
+  const scrim = modalRoot.querySelector('.chooser-scrim');
+  if (scrim) {
+    scrim.classList.add('dismissing');
+    setTimeout(() => {
+      // Only clear if it's still our dismissing chooser; defensive against
+      // other modals (e.g. confirm-delete) opening in the gap.
+      if (modalRoot.querySelector('.chooser-scrim.dismissing')) {
+        modalRoot.innerHTML = '';
+      }
+    }, 240);
+  } else {
+    modalRoot.innerHTML = '';
+  }
 }
 
 // ---- the static centre box: instructions / countdown / revealed song -------
@@ -460,7 +479,6 @@ function wireAppDelegation() {
 }
 
 function renderGame() {
-  if (state.phase === 'choosing') return; // chooser owns its own DOM tree
   mountGameShell();
 
   // stats strip
@@ -670,16 +688,22 @@ function loadLibrary() {
     return;
   }
 
-  // Tap That Track opens on the difficulty pop-up.
-  if (isTTT && !state.difficulty) {
-    state.phase = 'choosing';
-    renderChooser();
-    return;
-  }
-
+  // Render the game shell idle FIRST — this way the logo, stats, info-box and
+  // START buzzer are already painted when (on TTT) the difficulty chooser
+  // overlays on top. Picking a level dismisses the overlay and the game is
+  // already there, no flash-in.
+  //
+  // For TTT before a difficulty is chosen, applyTrackSet() leaves the full
+  // library in state.tracks (the filter only kicks in once state.difficulty
+  // is set), so the START button has something to chew on if needed. The
+  // chooser's scrim blocks pointer events behind it anyway.
   state.phase = 'idle';
   applyTrackSet();
   renderGame();
+
+  if (isTTT && !state.difficulty) {
+    renderChooserOverlay();
+  }
 }
 
 async function onToggleWrongOnly() {

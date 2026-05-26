@@ -85,9 +85,12 @@ body {
 }
 
 /* Desktop / tablet (anything wider than the phone-frame breakpoint): center
-   the screen vertically and horizontally as a phone-shaped card. Mobile is
-   unaffected — the @media block is min-width:481, so on real phones (≤480px
-   wide) we still get the full-bleed layout the design was built for. */
+   the content as a phone-width column on top of the body's background — NO
+   card framing (no border-radius, no shadow, no fill). The body's bg image
+   already runs edge-to-edge; we just make the .screen transparent and hide
+   the inner .bg-stage so its centered-on-440px-wide crop doesn't seam against
+   the body's centered-on-viewport crop. Mobile is unaffected (min-width:481
+   means real phones ≤480px skip this block and keep the full-bleed layout). */
 @media (min-width: 481px) {
   body {
     display: flex;
@@ -98,13 +101,16 @@ body {
   .screen {
     width: 100%;
     max-width: 440px;
-    /* Phone-ish aspect: tall, but never taller than the viewport with our
-       24px padding. min() keeps short laptop screens (≤900px tall) tidy. */
+    /* Cap the content column's height so logo / info-box / buzzer / bottombar
+       stay grouped together vertically instead of spreading across a tall
+       monitor. The block then sits vertically centered via body's flex. */
     height: min(900px, calc(100dvh - 48px));
-    border-radius: 36px;
-    box-shadow:
-      0 30px 80px rgba(0, 0, 0, 0.55),
-      0 0 0 1px rgba(255, 255, 255, 0.06);
+    background: transparent;
+  }
+  /* The inner bg layer is redundant on desktop — body already shows the same
+     image edge-to-edge. Hiding it removes the visible "card crop" seam. */
+  .bg-stage {
+    display: none;
   }
 }
 
@@ -789,7 +795,42 @@ h1, h2, h3 { margin: 0; line-height: 1.05; }
 
 /* =========================================================================
    Difficulty chooser (Tap That Track) — initial-load pop-up
+   The chooser now overlays the already-loaded game (idle state) via a scrim
+   in #modalRoot, so picking a level doesn't flash the game UI into existence.
    ========================================================================= */
+.chooser-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  /* Darker + more blur than the confirm-delete scrim — the brief is "darker
+     overlay behind the box so the loaded game underneath isn't too busy." */
+  background: rgba(4, 1, 14, 0.78);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
+  animation: phase-fade 0.22s ease both;
+}
+.chooser-scrim.dismissing {
+  pointer-events: none;
+  animation: chooser-out 0.24s ease both;
+}
+@keyframes chooser-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+.chooser-modal {
+  /* Slight extra lift so the modal pops against the darker scrim. */
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 0 60px rgba(255, 45, 158, 0.32),
+    0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* Legacy wrapper from the old in-#app chooser. Kept as a no-op so any
+   external snapshots/tests don't blow up; safe to delete later. */
 .chooser-wrap {
   flex: 1 1 auto;
   min-height: 0;
