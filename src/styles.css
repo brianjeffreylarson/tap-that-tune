@@ -57,7 +57,14 @@ html, body {
 body {
   min-height: 100dvh;
   color: var(--ink);
-  background: var(--bg-0);
+  /* On mobile the .screen covers the whole viewport so this never shows. On
+     desktop the .screen becomes a centered phone-shaped card and this fills
+     everything around it — same disco backdrop, no dead navy edges. */
+  background-color: var(--bg-0);
+  background-image: url('./assets/bg.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* =========================================================================
@@ -75,6 +82,30 @@ body {
   isolation: isolate;
   container-type: size;
   container-name: screen;
+}
+
+/* Desktop / tablet (anything wider than the phone-frame breakpoint): center
+   the screen vertically and horizontally as a phone-shaped card. Mobile is
+   unaffected — the @media block is min-width:481, so on real phones (≤480px
+   wide) we still get the full-bleed layout the design was built for. */
+@media (min-width: 481px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .screen {
+    width: 100%;
+    max-width: 440px;
+    /* Phone-ish aspect: tall, but never taller than the viewport with our
+       24px padding. min() keeps short laptop screens (≤900px tall) tidy. */
+    height: min(900px, calc(100dvh - 48px));
+    border-radius: 36px;
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
 }
 
 /* =========================================================================
