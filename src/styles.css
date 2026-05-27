@@ -116,15 +116,6 @@ body {
   .bg-stage {
     display: none;
   }
-  /* The bottombar's dark fill spans the full column width and reads as a
-     boundary line on desktop. Let the buttons float over the bg instead —
-     each .bar-btn already has its own pill background and border. */
-  .bottombar {
-    background: transparent;
-    border-top: none;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
 }
 
 /* =========================================================================
@@ -726,10 +717,8 @@ h1, h2, h3 { margin: 0; line-height: 1.05; }
   position: absolute;
   left: 0; right: 0; bottom: 0;
   z-index: 20;
-  background: rgba(8, 3, 20, 0.55);
-  -webkit-backdrop-filter: blur(14px) saturate(1.2);
-  backdrop-filter: blur(14px) saturate(1.2);
-  border-top: 1px solid rgba(190, 160, 255, 0.18);
+  /* No bar fill / blur / border — the buttons float over the bg image with
+     their own pill backgrounds (see .bar-btn). */
   padding:
     clamp(8px, 1.4cqh, 12px)
     calc(var(--safe-right) + clamp(12px, 3.6cqw, 16px))
@@ -812,9 +801,12 @@ h1, h2, h3 { margin: 0; line-height: 1.05; }
    in #modalRoot, so picking a level doesn't flash the game UI into existence.
    ========================================================================= */
 .chooser-scrim {
-  position: absolute;
+  /* Fixed so the scrim fills the ENTIRE viewport on desktop, not just the
+     440px content column. Lives in #chooserHost at body level so .screen's
+     container-type:size can't trap fixed positioning inside the column. */
+  position: fixed;
   inset: 0;
-  z-index: 60;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
