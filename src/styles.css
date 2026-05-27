@@ -106,11 +106,24 @@ body {
        monitor. The block then sits vertically centered via body's flex. */
     height: min(900px, calc(100dvh - 48px));
     background: transparent;
+    /* Let the brand-aura glow spill beyond the column instead of being
+       clipped at a hard rectangular boundary. The orbs and confetti layers
+       have their OWN overflow:hidden so they still stay inside the column. */
+    overflow: visible;
   }
   /* The inner bg layer is redundant on desktop — body already shows the same
      image edge-to-edge. Hiding it removes the visible "card crop" seam. */
   .bg-stage {
     display: none;
+  }
+  /* The bottombar's dark fill spans the full column width and reads as a
+     boundary line on desktop. Let the buttons float over the bg instead —
+     each .bar-btn already has its own pill background and border. */
+  .bottombar {
+    background: transparent;
+    border-top: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 
@@ -871,6 +884,24 @@ h1, h2, h3 { margin: 0; line-height: 1.05; }
   color: var(--ink-dim);
   margin: 6px 0 18px;
 }
+
+/* TTT chooser: brand logo lives inside the modal on initial load. The
+   page-level brand is hidden via body.chooser-active so we don't show two. */
+.chooser-brand {
+  margin: -4px 0 4px;
+  display: flex;
+  justify-content: center;
+}
+.chooser-brand .brand {
+  margin-bottom: 0;
+}
+.chooser-brand .brand-logo {
+  width: min(72%, 220px);
+  max-height: 110px;
+}
+body.chooser-active #app .brand {
+  visibility: hidden;
+}
 .diff-grid {
   display: flex;
   flex-direction: column;
@@ -913,9 +944,14 @@ h1, h2, h3 { margin: 0; line-height: 1.05; }
   background: linear-gradient(160deg, #c98bff 0%, var(--purple) 100%);
 }
 
-/* Single-button bottom bar (Tap That Track has no Missed filter) */
+/* Single-button bottom bar (Tap That Track has no Missed filter) — let the
+   pause pill hug its label instead of stretching to a fixed width. */
 .bottombar-inner.single { justify-content: center; }
-.bottombar-inner.single .bar-btn { flex: 0 1 240px; }
+.bottombar-inner.single .bar-btn {
+  flex: 0 0 auto;
+  width: auto;
+  padding: 0 clamp(18px, 5cqw, 24px);
+}
 
 /* Small destructive "remove this song" button between Pause and Missed (Brad) */
 .bar-x {
@@ -942,21 +978,37 @@ h1, h2, h3 { margin: 0; line-height: 1.05; }
   animation: phase-fade 0.18s ease both;
 }
 .confirm-modal { width: min(100%, 340px); }
+/* Small uppercase magenta prompt — same vibe as .info-note. Demoting the
+   "Remove this song?" line lets the song title underneath be the visual
+   focus instead of competing with it at similar size + weight. */
+.confirm-prompt {
+  font-family: var(--font);
+  font-size: clamp(11px, 3cqw, 13px);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  text-shadow: 0 0 14px rgba(255, 45, 158, 0.6);
+  margin-bottom: 10px;
+}
 .confirm-song {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(18px, 5cqw, 22px);
+  font-size: clamp(22px, 7cqw, 28px);
   line-height: 1.15;
-  margin: 4px 0;
+  margin: 0 0 6px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
 }
 .confirm-artist {
   font-family: var(--font);
   font-weight: 600;
   font-size: clamp(12px, 3.4cqw, 14px);
   color: var(--ink-dim);
+  text-shadow: none;
 }
 .confirm-actions {
   display: flex;

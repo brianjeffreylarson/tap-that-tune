@@ -254,7 +254,7 @@ function renderChooserOverlay() {
   modalRoot.innerHTML = `
     <div class="chooser-scrim" id="chooserScrim">
       <div class="modal chooser-modal">
-        <div class="modal-title">Choose your level</div>
+        <div class="chooser-brand">${brandHeader()}</div>
         <div class="modal-sub">Pick a difficulty to start</div>
         <div class="diff-grid">
           <button class="diff-btn diff-easy" data-diff="Easy">
@@ -270,6 +270,10 @@ function renderChooserOverlay() {
       </div>
     </div>
   `;
+  // The page-level brand sits behind the modal; suppress it while the chooser
+  // is up so we're not showing two logos. The body class is cleared after the
+  // dismiss animation completes.
+  document.body.classList.add('chooser-active');
   modalRoot.querySelectorAll('[data-diff]').forEach((b) =>
     b.addEventListener('click', () => {
       haptic(18);
@@ -293,9 +297,11 @@ function chooseDifficulty(d) {
       if (modalRoot.querySelector('.chooser-scrim.dismissing')) {
         modalRoot.innerHTML = '';
       }
+      document.body.classList.remove('chooser-active');
     }, 240);
   } else {
     modalRoot.innerHTML = '';
+    document.body.classList.remove('chooser-active');
   }
 }
 
@@ -387,10 +393,17 @@ function bottombarInnerHtml() {
       </div>`;
   }
 
-  // Brad Names Tunes: Pause + remove-song + the Missed drill filter.
+  // Brad Names Tunes: Pause + remove-song + the playlist toggle (Missed
+  // <-> All Songs). The toggle is allowed in every phase except while a song
+  // is actively playing — pausing first is fine, so are idle / buzzed /
+  // revealed. When wrongOnly is on, the label flips to "All Songs" so the
+  // button reads as the way OUT of the missed drill.
   const wrongN = Progress.wrongCount(state.allTracks);
-  const canFilter = state.phase === 'idle' || state.phase === 'paused';
+  const canFilter = state.phase !== 'playing';
   const canRemove = !!state.current; // a song is loaded (any in-round phase)
+  const filterLabel = state.wrongOnly
+    ? 'All Songs'
+    : `Missed${wrongN ? ` (${wrongN})` : ''}`;
   return `
     <div class="bottombar-inner">
       ${pauseBtn}
@@ -403,7 +416,7 @@ function bottombarInnerHtml() {
         <svg class="ico" viewBox="0 0 24 24" fill="${
           state.wrongOnly ? 'currentColor' : 'none'
         }" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linejoin="round" stroke-linecap="round" d="M12 3l2.6 5.6L20 9.4l-4.2 4.1 1 5.9L12 16.8 7.2 19.4l1-5.9L4 9.4l5.4-.8z"/></svg>
-        <span class="label">Missed${wrongN ? ` (${wrongN})` : ''}</span>
+        <span class="label">${filterLabel}</span>
       </button>
     </div>`;
 }
@@ -531,9 +544,8 @@ function syncModal() {
   modalRoot.innerHTML = `
     <div class="confirm-scrim">
       <div class="modal confirm-modal">
-        <div class="modal-title">Remove this song?</div>
+        <div class="confirm-prompt">Remove this song?</div>
         <div class="confirm-song">${esc(cur.title)}<span class="confirm-artist">${esc(cur.artist)}</span></div>
-        <div class="modal-sub">Drops it from your playlist and your missed list, for good. The audio file stays — Tap That Track still has it.</div>
         <div class="confirm-actions">
           <button id="cancelRemove" class="confirm-btn cancel">Cancel</button>
           <button id="confirmRemove" class="confirm-btn danger">Remove</button>
