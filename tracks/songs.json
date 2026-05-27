@@ -1,11 +1,11 @@
 {
-  "count": 956,
+  "count": 945,
   "by_difficulty": {
-    "Easy": 193,
-    "Hard": 128,
-    "Medium": 635
+    "Easy": 191,
+    "Hard": 124,
+    "Medium": 630
   },
-  "snippets": 20,
+  "snippets": 18,
   "songs": [
     {
       "title": "(I've Had) The Time of My Life",
@@ -53,14 +53,6 @@
       "difficulty": "Easy",
       "duration": 237.53,
       "file": "Easy/A Thousand Miles.mp3",
-      "snippet": false
-    },
-    {
-      "title": "A Whole New World",
-      "artist": "Peabo Bryson & Regina Belle",
-      "difficulty": "Easy",
-      "duration": 160.84,
-      "file": "Easy/A Whole New World.mp3",
       "snippet": false
     },
     {
@@ -425,7 +417,7 @@
     },
     {
       "title": "Crazy in Love",
-      "artist": "Beyonc\u00e9 feat. Jay-Z",
+      "artist": "Beyoncé feat. Jay-Z",
       "difficulty": "Easy",
       "duration": 236.17,
       "file": "Easy/Crazy in Love.mp3",
@@ -641,7 +633,7 @@
     },
     {
       "title": "Halo",
-      "artist": "Beyonc\u00e9",
+      "artist": "Beyoncé",
       "difficulty": "Easy",
       "duration": 261.67,
       "file": "Easy/Halo.mp3",
@@ -937,7 +929,7 @@
     },
     {
       "title": "Macarena",
-      "artist": "Los del R\u00edo",
+      "artist": "Los del Río",
       "difficulty": "Easy",
       "duration": 248.71,
       "file": "Easy/Macarena.mp3",
@@ -1041,10 +1033,10 @@
     },
     {
       "title": "Photograph",
-      "artist": "Ed Sheeran",
+      "artist": "Def Leppard",
       "difficulty": "Easy",
       "duration": 248.01,
-      "file": "Easy/Photograph.mp3",
+      "file": "Easy/Photograph - def leopard.mp3",
       "snippet": false
     },
     {
@@ -1169,7 +1161,7 @@
     },
     {
       "title": "Single Ladies (Put a Ring on It)",
-      "artist": "Beyonc\u00e9",
+      "artist": "Beyoncé",
       "difficulty": "Easy",
       "duration": 193.25,
       "file": "Easy/Single Ladies (Put a Ring on It).mp3",
@@ -1307,7 +1299,7 @@
       "title": "The Fresh Prince of Bel-Air Theme",
       "artist": "Will Smith",
       "difficulty": "Easy",
-      "duration": 164.73,
+      "duration": 76.54,
       "file": "Easy/The Fresh Prince of Bel-Air Theme.mp3",
       "snippet": false
     },
@@ -1373,14 +1365,6 @@
       "difficulty": "Easy",
       "duration": 278.07,
       "file": "Easy/Umbrella.mp3",
-      "snippet": false
-    },
-    {
-      "title": "Under the Sea",
-      "artist": "Samuel E. Wright",
-      "difficulty": "Easy",
-      "duration": 193.54,
-      "file": "Easy/Under the Sea.mp3",
       "snippet": false
     },
     {
@@ -1569,18 +1553,10 @@
     },
     {
       "title": "All My Life",
-      "artist": "Foo Fighters",
+      "artist": "K-Ci & JoJo",
       "difficulty": "Hard",
       "duration": 331.28,
-      "file": "Hard/All My Life.mp3",
-      "snippet": false
-    },
-    {
-      "title": "Animals",
-      "artist": "Nickelback",
-      "difficulty": "Hard",
-      "duration": 304.27,
-      "file": "Hard/Animals.mp3",
+      "file": "Hard/All My Life - kc & jojo.mp3",
       "snippet": false
     },
     {
@@ -2040,14 +2016,6 @@
       "snippet": false
     },
     {
-      "title": "Nikita",
-      "artist": "Elton John",
-      "difficulty": "Hard",
-      "duration": 252.29,
-      "file": "Hard/Nikita.mp3",
-      "snippet": false
-    },
-    {
       "title": "One Headlight",
       "artist": "The Wallflowers",
       "difficulty": "Hard",
@@ -2120,6 +2088,14 @@
       "snippet": false
     },
     {
+      "title": "Pressure",
+      "artist": "Billy Joel",
+      "difficulty": "Hard",
+      "duration": 277.52,
+      "file": "Hard/Pressure.mp3",
+      "snippet": false
+    },
+    {
       "title": "Push",
       "artist": "Matchbox Twenty",
       "difficulty": "Hard",
@@ -2176,11 +2152,11 @@
       "snippet": false
     },
     {
-      "title": "Saved by Hell",
-      "artist": "Saved by the Bell Cast",
+      "title": "Saved by the Bell Theme",
+      "artist": "Scott Gale",
       "difficulty": "Hard",
-      "duration": 218.38,
-      "file": "Hard/Saved by Hell.mp3",
+      "duration": 65.07,
+      "file": "Hard/Saved By The Bell Theme.mp3",
       "snippet": false
     },
     {
@@ -2296,14 +2272,6 @@
       "snippet": false
     },
     {
-      "title": "Stumble and Fall",
-      "artist": "Razorlight",
-      "difficulty": "Hard",
-      "duration": 181.73,
-      "file": "Hard/Stumble and Fall.mp3",
-      "snippet": false
-    },
-    {
       "title": "Tear in My Heart",
       "artist": "Twenty One Pilots",
       "difficulty": "Hard",
@@ -2371,7 +2339,7 @@
       "title": "Therefore I Am",
       "artist": "Billie Eilish",
       "difficulty": "Hard",
-      "duration": 62.15,
+      "duration": 173.69,
       "file": "Hard/Therefore I Am.mp3",
       "snippet": false
     },
@@ -2454,22 +2422,6 @@
       "duration": 204.98,
       "file": "Hard/Violet.mp3",
       "snippet": false
-    },
-    {
-      "title": "Walk on the Ocean",
-      "artist": "Toad the Wet Sprocket",
-      "difficulty": "Hard",
-      "duration": 29.78,
-      "file": "Hard/Walk on the Ocean.mp3",
-      "snippet": true
-    },
-    {
-      "title": "Warehouse",
-      "artist": "Dave Matthews Band",
-      "difficulty": "Hard",
-      "duration": 29.78,
-      "file": "Hard/Warehouse.mp3",
-      "snippet": true
     },
     {
       "title": "We Belong",
@@ -2563,7 +2515,7 @@
       "title": "lovely",
       "artist": "Billie Eilish & Khalid",
       "difficulty": "Hard",
-      "duration": 265.8,
+      "duration": 200.52,
       "file": "Hard/lovely.mp3",
       "snippet": false
     },
@@ -2577,7 +2529,7 @@
     },
     {
       "title": "(Don't Fear) The Reaper",
-      "artist": "Blue \u00d6yster Cult",
+      "artist": "Blue Öyster Cult",
       "difficulty": "Medium",
       "duration": 308.17,
       "file": "Medium/(Don't Fear) The Reaper.mp3",
@@ -2675,10 +2627,9 @@
       "title": "Alive",
       "artist": "Pearl Jam",
       "difficulty": "Medium",
-      "duration": 2139.04,
+      "duration": 340.04,
       "file": "Medium/Alive.mp3",
-      "snippet": false,
-      "note": "long"
+      "snippet": false
     },
     {
       "title": "All Good Things (Come to an End)",
@@ -2692,10 +2643,9 @@
       "title": "All I Have",
       "artist": "Jennifer Lopez feat. LL Cool J",
       "difficulty": "Medium",
-      "duration": 1306.21,
+      "duration": 260.02,
       "file": "Medium/All I Have.mp3",
-      "snippet": false,
-      "note": "long"
+      "snippet": false
     },
     {
       "title": "All I Really Want",
@@ -2940,7 +2890,7 @@
     },
     {
       "title": "Beautiful Liar",
-      "artist": "Beyonc\u00e9 & Shakira",
+      "artist": "Beyoncé & Shakira",
       "difficulty": "Medium",
       "duration": 201.04,
       "file": "Medium/Beautiful Liar.mp3",
@@ -3008,14 +2958,6 @@
       "difficulty": "Medium",
       "duration": 187.72,
       "file": "Medium/Beverly Hills 90210 Theme.mp3",
-      "snippet": false
-    },
-    {
-      "title": "Beverly Hills 90210 Theme (Alt Mix)",
-      "artist": "John E. Davis",
-      "difficulty": "Medium",
-      "duration": 200.18,
-      "file": "Medium/Beverly Hills 90210 Theme (Alt Mix).mp3",
       "snippet": false
     },
     {
@@ -3387,6 +3329,14 @@
       "snippet": false
     },
     {
+      "title": "Crash Into Me",
+      "artist": "Dave Matthews Band",
+      "difficulty": "Medium",
+      "duration": 316.37,
+      "file": "Medium/Crash into Me.mp3",
+      "snippet": false
+    },
+    {
       "title": "Crazy",
       "artist": "Seal",
       "difficulty": "Medium",
@@ -3656,14 +3606,6 @@
       "difficulty": "Medium",
       "duration": 232.7,
       "file": "Medium/E.T..mp3",
-      "snippet": false
-    },
-    {
-      "title": "E.T. Theme (Flying)",
-      "artist": "John Williams",
-      "difficulty": "Medium",
-      "duration": 225.12,
-      "file": "Medium/E.T. Theme (Flying).mp3",
       "snippet": false
     },
     {
@@ -4740,7 +4682,7 @@
     },
     {
       "title": "Irreplaceable",
-      "artist": "Beyonc\u00e9",
+      "artist": "Beyoncé",
       "difficulty": "Medium",
       "duration": 227.97,
       "file": "Medium/Irreplaceable.mp3",
@@ -4760,14 +4702,6 @@
       "difficulty": "Medium",
       "duration": 456.91,
       "file": "Medium/It's All Coming Back to Me Now.mp3",
-      "snippet": false
-    },
-    {
-      "title": "It's Like That",
-      "artist": "Run-DMC",
-      "difficulty": "Medium",
-      "duration": 203.42,
-      "file": "Medium/It's Like That.mp3",
       "snippet": false
     },
     {
@@ -5392,10 +5326,9 @@
       "title": "Move Along",
       "artist": "The All-American Rejects",
       "difficulty": "Medium",
-      "duration": 902.03,
+      "duration": 240.04,
       "file": "Medium/Move Along.mp3",
-      "snippet": false,
-      "note": "long"
+      "snippet": false
     },
     {
       "title": "Ms. Jackson",
@@ -5487,7 +5420,7 @@
     },
     {
       "title": "Nothing Compares 2 U",
-      "artist": "Sin\u00e9ad O'Connor",
+      "artist": "Sinéad O'Connor",
       "difficulty": "Medium",
       "duration": 281.57,
       "file": "Medium/Nothing Compares 2 U.mp3",
@@ -5505,10 +5438,9 @@
       "title": "Oh! Darling",
       "artist": "The Beatles",
       "difficulty": "Medium",
-      "duration": 886.9,
+      "duration": 207.05,
       "file": "Medium/Oh! Darling.mp3",
-      "snippet": false,
-      "note": "long"
+      "snippet": false
     },
     {
       "title": "Oh, Pretty Woman",
@@ -5697,10 +5629,10 @@
     },
     {
       "title": "Photograph",
-      "artist": "Nickelback",
+      "artist": "Ed Sheeran",
       "difficulty": "Medium",
       "duration": 259.03,
-      "file": "Medium/Photograph.mp3",
+      "file": "Medium/Photograph - ed sheeran.mp3",
       "snippet": false
     },
     {
@@ -5709,6 +5641,14 @@
       "difficulty": "Medium",
       "duration": 193.88,
       "file": "Medium/Physical.mp3",
+      "snippet": false
+    },
+    {
+      "title": "Physical",
+      "artist": "Dua Lipa",
+      "difficulty": "Medium",
+      "duration": 193.88,
+      "file": "Medium/Physical (Dua Lipa).mp3",
       "snippet": false
     },
     {
@@ -5765,14 +5705,6 @@
       "difficulty": "Medium",
       "duration": 267.34,
       "file": "Medium/Pour Some Sugar on Me.mp3",
-      "snippet": false
-    },
-    {
-      "title": "Pressure",
-      "artist": "Billy Joel",
-      "difficulty": "Medium",
-      "duration": 144.38,
-      "file": "Medium/Pressure.mp3",
       "snippet": false
     },
     {
@@ -6214,10 +6146,9 @@
       "title": "Sherry",
       "artist": "The Four Seasons",
       "difficulty": "Medium",
-      "duration": 479.97,
+      "duration": 159.01,
       "file": "Medium/Sherry.mp3",
-      "snippet": false,
-      "note": "long"
+      "snippet": false
     },
     {
       "title": "Shining Star",
@@ -6236,11 +6167,11 @@
       "snippet": false
     },
     {
-      "title": "Shiver",
+      "title": "Shivers",
       "artist": "Ed Sheeran",
       "difficulty": "Medium",
-      "duration": 179.8,
-      "file": "Medium/Shiver.mp3",
+      "duration": 207.88,
+      "file": "Medium/Shivers.mp3",
       "snippet": false
     },
     {
@@ -6364,14 +6295,6 @@
       "snippet": false
     },
     {
-      "title": "Someday",
-      "artist": "Mariah Carey",
-      "difficulty": "Medium",
-      "duration": 207.52,
-      "file": "Medium/Someday.mp3",
-      "snippet": false
-    },
-    {
       "title": "Someone You Loved",
       "artist": "Lewis Capaldi",
       "difficulty": "Medium",
@@ -6383,10 +6306,9 @@
       "title": "Something",
       "artist": "The Beatles",
       "difficulty": "Medium",
-      "duration": 547.28,
+      "duration": 183.01,
       "file": "Medium/Something.mp3",
-      "snippet": false,
-      "note": "long"
+      "snippet": false
     },
     {
       "title": "Something Just Like This",
@@ -6402,14 +6324,6 @@
       "difficulty": "Medium",
       "duration": 227.6,
       "file": "Medium/Something to Talk About.mp3",
-      "snippet": false
-    },
-    {
-      "title": "Somewhere Over the Rainbow/What a Wonderful World",
-      "artist": "Israel Kamakawiwo\u02bbole",
-      "difficulty": "Medium",
-      "duration": 300.85,
-      "file": "Medium/Somewhere Over the Rainbow-What a Wonderful World.mp3",
       "snippet": false
     },
     {
@@ -6581,10 +6495,18 @@
       "snippet": false
     },
     {
+      "title": "Suicide Is Painless (Theme from M*A*S*H)",
+      "artist": "Johnny Mandel",
+      "difficulty": "Medium",
+      "duration": 55.33,
+      "file": "Medium/Suicide Is Painless (Theme from M-A-S-H).mp3",
+      "snippet": false
+    },
+    {
       "title": "Suite: Judy Blue Eyes",
       "artist": "Crosby, Stills & Nash",
       "difficulty": "Medium",
-      "duration": 40.46,
+      "duration": 444.13,
       "file": "Medium/Suite - Judy Blue Eyes.mp3",
       "snippet": false
     },
@@ -6602,14 +6524,6 @@
       "difficulty": "Medium",
       "duration": 200.05,
       "file": "Medium/Super Bass.mp3",
-      "snippet": false
-    },
-    {
-      "title": "Superman (It's Not Easy)",
-      "artist": "Five for Fighting",
-      "difficulty": "Medium",
-      "duration": 225.23,
-      "file": "Medium/Superman (It's Not Easy).mp3",
       "snippet": false
     },
     {
@@ -6840,10 +6754,9 @@
       "title": "The Impression That I Get",
       "artist": "The Mighty Mighty Bosstones",
       "difficulty": "Medium",
-      "duration": 822.52,
+      "duration": 234.03,
       "file": "Medium/The Impression That I Get.mp3",
-      "snippet": false,
-      "note": "long"
+      "snippet": false
     },
     {
       "title": "The Joker",
@@ -6889,7 +6802,7 @@
       "title": "The Middle",
       "artist": "Zedd, Maren Morris & Grey",
       "difficulty": "Medium",
-      "duration": 166.09,
+      "duration": 182.33,
       "file": "Medium/The Middle.mp3",
       "snippet": false
     },
@@ -6990,10 +6903,18 @@
       "snippet": false
     },
     {
+      "title": "Three Times a Lady",
+      "artist": "Commodores",
+      "difficulty": "Medium",
+      "duration": 217.57,
+      "file": "Medium/Three Times a Lady.mp3",
+      "snippet": false
+    },
+    {
       "title": "Thrift Shop",
       "artist": "Macklemore & Ryan Lewis feat. Wanz",
       "difficulty": "Medium",
-      "duration": 154.78,
+      "duration": 235.65,
       "file": "Medium/Thrift Shop.mp3",
       "snippet": false
     },
@@ -7009,16 +6930,8 @@
       "title": "Time After Time",
       "artist": "Cyndi Lauper",
       "difficulty": "Medium",
-      "duration": 116.35,
+      "duration": 238.26,
       "file": "Medium/Time After Time.mp3",
-      "snippet": false
-    },
-    {
-      "title": "Times Like These",
-      "artist": "Foo Fighters",
-      "difficulty": "Medium",
-      "duration": 202.11,
-      "file": "Medium/Times Like These.mp3",
       "snippet": false
     },
     {
@@ -7094,14 +7007,6 @@
       "snippet": false
     },
     {
-      "title": "Tubular Bells (The Exorcist Theme)",
-      "artist": "Mike Oldfield",
-      "difficulty": "Medium",
-      "duration": 202.03,
-      "file": "Medium/Tubular Bells (The Exorcist Theme).mp3",
-      "snippet": false
-    },
-    {
       "title": "Twist and Shout",
       "artist": "The Beatles",
       "difficulty": "Medium",
@@ -7151,10 +7056,10 @@
     },
     {
       "title": "Upside Down",
-      "artist": "Jack Johnson",
+      "artist": "Diana Ross",
       "difficulty": "Medium",
       "duration": 245.37,
-      "file": "Medium/Upside Down.mp3",
+      "file": "Medium/Upside Down - diana ross.mp3",
       "snippet": false
     },
     {
