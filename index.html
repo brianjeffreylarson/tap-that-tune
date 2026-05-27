@@ -32,10 +32,12 @@
       <div class="orbs" id="orbs" aria-hidden="true"></div>
       <div id="app"></div>
       <div id="confetti" class="confetti-layer" aria-hidden="true"></div>
-      <!-- Overlay layer for confirm dialogs (sibling of #app so it can sit
-           above the bottom bar). -->
-      <div id="modalRoot"></div>
     </div>
+    <!-- Overlay layer for the difficulty chooser + the remove-song confirm.
+         Body-level (NOT inside .screen) because .screen has container-type:
+         size, which traps position:fixed children inside the 440px column on
+         desktop — so a full-viewport scrim has to live one level up. -->
+    <div id="modalRoot"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

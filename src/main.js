@@ -251,18 +251,10 @@ function on(id, evt, fn) {
 // the chooser into #modalRoot as a scrim+modal overlay. Picking a level just
 // fades the scrim out and the already-loaded game is revealed underneath.
 function renderChooserOverlay() {
-  // Mount at body level (not inside .screen / #modalRoot). The .screen has
-  // container-type:size, which makes it a containing block for fixed-
-  // positioned descendants, so a position:fixed scrim inside .screen would
-  // be clipped to the 440px desktop column. Hanging it off body bypasses
-  // that and lets the scrim cover the full viewport.
-  let host = document.getElementById('chooserHost');
-  if (!host) {
-    host = document.createElement('div');
-    host.id = 'chooserHost';
-    document.body.appendChild(host);
-  }
-  host.innerHTML = `
+  // #modalRoot is now at body level (see index.html), so a position:fixed
+  // scrim inside it can cover the full viewport on desktop — no longer
+  // trapped inside .screen's 440px column.
+  modalRoot.innerHTML = `
     <div class="chooser-scrim" id="chooserScrim">
       <div class="modal chooser-modal">
         <div class="chooser-brand">${brandHeader()}</div>
@@ -285,7 +277,7 @@ function renderChooserOverlay() {
   // is up so we're not showing two logos. The body class is cleared after the
   // dismiss animation completes.
   document.body.classList.add('chooser-active');
-  host.querySelectorAll('[data-diff]').forEach((b) =>
+  modalRoot.querySelectorAll('[data-diff]').forEach((b) =>
     b.addEventListener('click', () => {
       haptic(18);
       chooseDifficulty(b.getAttribute('data-diff'));
@@ -293,24 +285,23 @@ function renderChooserOverlay() {
   );
 }
 
-function dismissChooserHost() {
-  const host = document.getElementById('chooserHost');
-  if (host) host.remove();
-  document.body.classList.remove('chooser-active');
-}
-
 function chooseDifficulty(d) {
   state.difficulty = d;
   applyTrackSet();
   // Fade the chooser out instead of yanking it; the game is already idle
-  // behind it so no further renderGame() call is needed (state.phase is
-  // already 'idle', and the buzzer would still say START).
-  const scrim = document.querySelector('#chooserHost .chooser-scrim');
+  // behind it so no further renderGame() call is needed.
+  const scrim = modalRoot.querySelector('.chooser-scrim');
   if (scrim) {
     scrim.classList.add('dismissing');
-    setTimeout(dismissChooserHost, 240);
+    setTimeout(() => {
+      if (modalRoot.querySelector('.chooser-scrim.dismissing')) {
+        modalRoot.innerHTML = '';
+      }
+      document.body.classList.remove('chooser-active');
+    }, 240);
   } else {
-    dismissChooserHost();
+    modalRoot.innerHTML = '';
+    document.body.classList.remove('chooser-active');
   }
 }
 

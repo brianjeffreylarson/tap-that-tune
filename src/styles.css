@@ -955,18 +955,20 @@ body.chooser-active #app .brand {
 .bar-x .ico { width: 18px; height: 18px; }
 .bar-x:disabled { color: var(--ink); }
 
-/* Confirm-delete dialog (sits in #modalRoot, above the bottom bar) */
+/* Confirm-delete dialog. Lives in body-level #modalRoot and uses fixed
+   positioning so the scrim fills the entire viewport (including desktop's
+   off-column area), not just the .screen rectangle. */
 .confirm-scrim {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 60;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(8, 3, 22, 0.62);
-  -webkit-backdrop-filter: blur(7px);
-  backdrop-filter: blur(7px);
+  background: rgba(8, 3, 22, 0.72);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   animation: phase-fade 0.18s ease both;
 }
 .confirm-modal { width: min(100%, 340px); }
