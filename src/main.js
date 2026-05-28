@@ -31,7 +31,17 @@ import {
   HOOK_FRACTION,
   HOOK_JITTER,
   AUTO_REVEAL_MS,
+  TTT_COUNTDOWN_MS,
 } from './config.js';
+
+// The countdown length for the current round. On TTT it depends on the chosen
+// difficulty (Easy 30s / Medium 20s / Hard 10s); Brad always uses AUTO_REVEAL_MS.
+function countdownMs() {
+  if (isTTT && state.difficulty && TTT_COUNTDOWN_MS[state.difficulty] != null) {
+    return TTT_COUNTDOWN_MS[state.difficulty];
+  }
+  return AUTO_REVEAL_MS;
+}
 import * as Progress from './progress.js';
 import { createPlayer } from './player.js';
 import { esc, shuffle } from './util.js';
@@ -258,16 +268,24 @@ function renderChooserOverlay() {
     <div class="chooser-scrim" id="chooserScrim">
       <div class="modal chooser-modal">
         <div class="chooser-brand">${brandHeader()}</div>
+        <ol class="chooser-howto">
+          <li>Tap <b>START</b> to play a song and start the countdown clock.</li>
+          <li>Name the tune in your head, then tap to lock in your guess.</li>
+          <li>Tap <b>REVEAL</b> to see the title, then grade yourself <b>GOT IT</b> or <b>MISSED</b>.</li>
+        </ol>
         <div class="modal-sub">Pick a difficulty to start</div>
         <div class="diff-grid">
           <button class="diff-btn diff-easy" data-diff="Easy">
             <span class="diff-name">Easy</span>
+            <span class="diff-time">${TTT_COUNTDOWN_MS.Easy / 1000}s to guess</span>
           </button>
           <button class="diff-btn diff-medium" data-diff="Medium">
             <span class="diff-name">Medium</span>
+            <span class="diff-time">${TTT_COUNTDOWN_MS.Medium / 1000}s to guess</span>
           </button>
           <button class="diff-btn diff-hard" data-diff="Hard">
             <span class="diff-name">Hard</span>
+            <span class="diff-time">${TTT_COUNTDOWN_MS.Hard / 1000}s to guess</span>
           </button>
         </div>
       </div>
@@ -754,7 +772,7 @@ async function nextRound() {
   state.current = track;
   state.currentStartMs = positionMs;
   state.phase = 'playing';
-  state.timeLeftMs = AUTO_REVEAL_MS;
+  state.timeLeftMs = countdownMs();
   state.error = null;
   state.busy = true;
   renderGame();

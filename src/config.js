@@ -38,5 +38,12 @@ export const HOOK_JITTER = 0.13;
 // Auto-reveal a song as a miss after this long with no buzz-in.
 export const AUTO_REVEAL_MS = 20000;
 
+// Tap That Track only: per-difficulty countdown (ms). Brad uses AUTO_REVEAL_MS.
+export const TTT_COUNTDOWN_MS = {
+  Easy: 30000,
+  Medium: 20000,
+  Hard: 10000,
+};
+
 // A wrong-flagged song clears only after this many CONSECUTIVE correct answers.
 export const STREAK_TO_CLEAR = 3;
