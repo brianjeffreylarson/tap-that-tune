@@ -270,22 +270,19 @@ function renderChooserOverlay() {
         <div class="chooser-brand">${brandHeader()}</div>
         <ol class="chooser-howto">
           <li>Tap <b>START</b> to play a song and start the countdown clock.</li>
-          <li>Name the tune in your head, then tap to lock in your guess.</li>
+          <li>When you know the song name, tap to lock in your guess.</li>
           <li>Tap <b>REVEAL</b> to see the title, then grade yourself <b>GOT IT</b> or <b>MISSED</b>.</li>
         </ol>
-        <div class="modal-sub">Pick a difficulty to start</div>
+        <div class="modal-sub chooser-cta">Pick a difficulty to start</div>
         <div class="diff-grid">
           <button class="diff-btn diff-easy" data-diff="Easy">
             <span class="diff-name">Easy</span>
-            <span class="diff-time">${TTT_COUNTDOWN_MS.Easy / 1000}s to guess</span>
           </button>
           <button class="diff-btn diff-medium" data-diff="Medium">
             <span class="diff-name">Medium</span>
-            <span class="diff-time">${TTT_COUNTDOWN_MS.Medium / 1000}s to guess</span>
           </button>
           <button class="diff-btn diff-hard" data-diff="Hard">
             <span class="diff-name">Hard</span>
-            <span class="diff-time">${TTT_COUNTDOWN_MS.Hard / 1000}s to guess</span>
           </button>
         </div>
       </div>
@@ -381,7 +378,7 @@ function buzzerZoneContent() {
   }
   if (state.phase === 'playing' && cur) {
     return `<button data-action="buzzer" id="buzzer" class="bigplay buzz" ${state.busy ? 'disabled' : ''}>
-      ${state.busy ? '<span class="spinner"></span>' : '<span class="buzz-label">BUZZ</span>'}
+      ${state.busy ? '<span class="spinner"></span>' : '<span class="buzz-label">GUESS</span>'}
     </button>`;
   }
   if (state.phase === 'paused' && cur) {

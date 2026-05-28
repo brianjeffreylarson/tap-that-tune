@@ -6,10 +6,10 @@ Curated practice library for Brad's Name That Tune appearance. Every MP3 has bee
 
 ```
 brad tunes/
-├── Easy/      193 songs — mass-recognition cultural staples
-├── Medium/    635 songs — well-known but less iconic
-├── Hard/      128 songs — deeper cuts / harder to name
-└── songs.json — manifest for the web app (956 songs total)
+├── Easy/      191 songs — mass-recognition cultural staples
+├── Medium/    630 songs — well-known but less iconic
+├── Hard/      124 songs — deeper cuts / harder to name
+└── songs.json — manifest for the web app (945 songs total)
 ```
 
 Every song has been reviewed, tagged, and sorted. The `flagged/` and `missing/` folders have been processed and removed.
