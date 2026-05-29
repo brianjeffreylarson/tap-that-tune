@@ -270,7 +270,7 @@ function renderChooserOverlay() {
         <div class="chooser-brand">${brandHeader()}</div>
         <ol class="chooser-howto">
           <li>Tap <b>START</b> to play a song and start the countdown clock.</li>
-          <li>When you know the song name, tap to lock in your guess.</li>
+          <li>When you know the song name, tap to <b>LOCK IN</b> your guess.</li>
           <li>Tap <b>REVEAL</b> to see the title, then grade yourself <b>GOT IT</b> or <b>MISSED</b>.</li>
         </ol>
         <div class="modal-sub chooser-cta">Pick a difficulty to start</div>
