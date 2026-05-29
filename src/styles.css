@@ -950,17 +950,16 @@ body.chooser-active #app .brand {
 }
 .diff-grid {
   display: flex;
-  flex-direction: row;
-  gap: 8px;
+  flex-direction: column;
+  gap: 11px;
 }
 .diff-btn {
-  flex: 1 1 0;
-  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 16px 8px;
+  width: 100%;
+  padding: 16px 18px;
   border-radius: 16px;
   border: 1.5px solid rgba(255, 255, 255, 0.45);
   color: #fff;
@@ -975,9 +974,9 @@ body.chooser-active #app .brand {
 }
 .diff-btn:active { transform: scale(0.97); filter: brightness(1.1); }
 .diff-name {
-  font-size: clamp(13px, 3.6cqw, 16px);
+  font-size: clamp(18px, 5cqw, 22px);
   font-weight: 900;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 .diff-easy {
