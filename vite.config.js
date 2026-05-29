@@ -87,11 +87,27 @@ function serveTracks() {
 // index.html serves both products. Brad Names Tunes is the default.
 function appHtmlVars() {
   const variant = (process.env.VITE_APP_VARIANT || 'brad').toLowerCase();
-  const name = variant === 'ttt' ? 'Tap That Track' : 'Brad Names Tunes';
+  const isTTT = variant === 'ttt';
+  const name = isTTT ? 'Tap That Track' : 'Brad Names Tunes';
+  const desc = 'Name That Tune, your way — beat the clock and guess the song.';
+  // Absolute site URL per product, used to build an absolute og:image URL
+  // (social scrapers like iMessage require the image URL to be absolute).
+  // Edit the Brad domain if needed; VITE_SITE_URL overrides at build time.
+  const siteUrl = (
+    process.env.VITE_SITE_URL ||
+    (isTTT ? 'https://tapthattrack.com' : 'https://bradnamestunes.com')
+  ).replace(/\/$/, '');
+  const ogImage = `${siteUrl}/${isTTT ? 'og-ttt.png' : 'og-brad.png'}`;
+  const vars = {
+    '%APP_NAME%': name,
+    '%APP_DESC%': desc,
+    '%APP_URL%': siteUrl,
+    '%OG_IMAGE%': ogImage,
+  };
   return {
     name: 'app-html-vars',
     transformIndexHtml(html) {
-      return html.replace(/%APP_NAME%/g, name);
+      return html.replace(/%APP_NAME%|%APP_DESC%|%APP_URL%|%OG_IMAGE%/g, (m) => vars[m]);
     },
   };
 }

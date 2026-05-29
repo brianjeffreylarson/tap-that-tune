@@ -184,7 +184,7 @@ body {
   padding:
     calc(var(--safe-top) + 18px)
     calc(var(--safe-right) + 16px)
-    calc(var(--safe-bottom) + 88px)   /* clearance for the bottom bar */
+    calc(var(--safe-bottom) + 76px)   /* clearance for the bottom bar */
     calc(var(--safe-left) + 16px);
   display: flex;
   flex-direction: column;
@@ -500,7 +500,7 @@ h1, h2, h3 { margin: 0; line-height: 1.05; }
   align-items: center;
   justify-content: center;
   gap: 6px;
-  width: clamp(160px, min(58cqw, 30cqh), 280px);
+  width: clamp(180px, min(64cqw, 34cqh), 320px);
   aspect-ratio: 1 / 1;
   margin: 4px auto;
   border-radius: 50%;
@@ -827,6 +827,11 @@ h1, h2, h3 { margin: 0; line-height: 1.05; }
   to { opacity: 0; }
 }
 .chooser-modal {
+  /* Never let the chooser clip on short phones — scroll inside the modal if
+     the logo + instructions + buttons exceed the available height. */
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   /* Slight extra lift so the modal pops against the darker scrim. */
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.06) inset,
